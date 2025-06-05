@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=FileCentipede
+Exec=FileCentipede
+Icon=logo
+Type=Application
+Categories=Network;FileTransfer;DownloadManager;
+Terminal=false
