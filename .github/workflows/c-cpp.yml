@@ -12,19 +12,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository (skip broken submodule)
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: false
+          submodules: false   # <– do not initialize any submodules
 
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y \
-            build-essential cmake libssl-dev \
-            qt6-base-dev qt6-tools-dev qt6-tools-dev-tools \
-            qt6-l10n-tools qt6-base-dev-tools \
-            linuxdeploy wget patchelf fuse libfuse2
+            build-essential \
+            cmake \
+            libssl-dev \
+            qt6-base-dev \
+            qt6-tools-dev \
+            qt6-tools-dev-tools \
+            qt6-l10n-tools \
+            qt6-base-dev-tools \
+            wget \
+            patchelf \
+            fuse \
+            libfuse2
 
       - name: Set environment for Qt6
         run: |
@@ -44,7 +52,7 @@ jobs:
           cd build
           make -j$(nproc)
 
-      - name: Download linuxdeploy and plugins
+      - name: Download linuxdeploy and linuxdeploy-plugin-qt
         run: |
           mkdir -p appimage-tools
           cd appimage-tools
@@ -57,10 +65,13 @@ jobs:
         run: |
           cd build
           mkdir -p AppDir/usr/bin
+          # Copy your compiled binary into AppDir/usr/bin
           cp FileCentipede AppDir/usr/bin/
 
           cd ..
-          ./appimage-tools/linuxdeploy-x86_64.AppImage --appdir build/AppDir \
+          # Use the linuxdeploy AppImage to bundle Qt6 and produce a single .AppImage
+          ./appimage-tools/linuxdeploy-x86_64.AppImage \
+            --appdir build/AppDir \
             -d FileCentipede.desktop \
             -i resources/logo.png \
             --plugin qt \
