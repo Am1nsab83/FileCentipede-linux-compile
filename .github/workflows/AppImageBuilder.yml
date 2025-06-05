@@ -1,0 +1,181 @@
+version: 1
+app: filecentipede
+arch: x86_64
+appdir: AppDir
+runtime: appimage
+use_xdg_dirs: true
+
+files:
+  - file: FileCentipede.desktop
+    dest: usr/share/applications/
+  - file: resources/logo.png
+    dest: usr/share/pixmaps/
+
+environment:
+  QT_QPA_PLATFORM_PLUGIN_PATH: usr/plugins/platforms
+  LD_LIBRARY_PATH: usr/lib/x86_64-linux-gnu
+
+dependencies:
+  - libssl1.1
+  - libpcre2-8-0
+  - libbsd0
+  - libqt6core6a
+  - libqt6gui6a
+  - libqt6widgets6a
+  - libqt6network6a
+  - libqt6dbus6a
+  - libqt6sql6a
+  - libqt6printsupport6a
+  - libqt6xml6a
+  - libqt6svg6a
+  - libqt6opengl6a
+  - libqt6quick6a
+  - libqt6qml6a
+  - libqt6websockets6a
+  - libqt6webenginecore6a
+  - libqt6webenginewidgets6a
+  - libqt6webengine6a
+  - libqt6location6a
+  - libqt6positioning6a
+  - libqt6charts6a
+  - libqt6imageformats6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+  - libqt6webenginewidgets-6a
+  - libqt6webengine-6a
+  - libqt6location-6a
+  - libqt6positioning-6a
+  - libqt6charts-6a
+  - libqt6imageformats-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickcontrols2-6a
+  - libqt6quickdialogs2-6a
+  - libqt6quicklayouts-6a
+  - libqt6quickwidgets-6a
+  - libqt6svg-6a
+  - libqt6webenginecore-6a
+ 
+::contentReference[oaicite:0]{index=0}
+ 
