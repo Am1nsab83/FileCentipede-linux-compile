@@ -1,50 +1,58 @@
-name: Build and Release AppImage
+name: Build FileCentipede AppImage
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - uses: actions/checkout@v2
 
-      - name: Set up Qt6
-        run: |
-          sudo apt update
-          sudo apt install -y qt6-base-dev qt6-tools-dev-tools qt6-qmake
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake build-essential
 
-      - name: Install dependencies
-        run: |
-          sudo apt install -y cmake build-essential
+    - name: Create recipe
+      run: |
+        cat > AppImageBuilder.yml <<EOL
+        version: 1
+        script:
+          - mkdir build
+          - cd build
+          - cmake ../source_code
+          - make
+          - make install DESTDIR=../AppDir
+        AppDir:
+          path: ./AppDir
+          app_info:
+            id: com.filecxx.FileCentipede
+            name: FileCentipede
+            icon: filecentipede
+            version: 1.0.0
+            exec: usr/bin/filecentipede
+          files:
+            exclude:
+              - usr/share/man
+              - usr/share/doc
+              - usr/share/info
+          runtime:
+            env:
+              LD_LIBRARY_PATH: \${APPDIR}/usr/lib:\${APPDIR}/usr/lib/x86_64-linux-gnu
+        EOL
 
-      - name: Build FileCentipede
-        run: |
-          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --target install DESTDIR=AppDir
+    - name: Build AppImage
+      uses: AppImageCrafters/build-appimage-action@master
+      with:
+        recipe: AppImageBuilder.yml
 
-      - name: Prepare AppImage
-        run: |
-          wget https://github.com/AppImageCrafters/build-appimage/releases/download/v1.0.0/appimage-builder-x86_64.AppImage
-          chmod +x appimage-builder-x86_64.AppImage
-          ./appimage-builder-x86_64.AppImage --recipe AppImageBuilder.yml
-
-      - name: Upload AppImage as Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: FileCentipede-AppImage
-          path: AppDir/*.AppImage
-
-      - name: Create GitHub Release and Upload AppImage
-        uses: ghcr.io/softprops/action-gh-release@v1
-        with:
-          files: AppDir/*.AppImage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload AppImage
+      uses: actions/upload-artifact@v2
+      with:
+        name: FileCentipede-AppImage
+        path: |
+          *.AppImage
