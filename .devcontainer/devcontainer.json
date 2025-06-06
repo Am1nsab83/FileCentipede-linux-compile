@@ -1,0 +1,35 @@
+{
+  // A name for this dev container
+  "name": "Arch Linux (Qt6 + AppImage)",
+
+  // Tell Codespaces to build the Dockerfile in this folder
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+
+  // Run as root initially so that Docker can install packages, then switch to the non-root user.
+  "runArgs": [
+    // If you ever need to run Docker INSIDE this container (e.g. to build AppImages),
+    // you can mount the host’s Docker socket:
+    // "--volume=/var/run/docker.sock:/var/run/docker.sock",
+    // "--volume=/usr/bin/docker:/usr/bin/docker"
+  ],
+
+  // Once the container is up, Codespaces will attach your terminal/VS Code to this user.
+  // The default user in the Dockerfile is 'codespace', so no need to override "remoteUser".
+
+  // Install the VS Code “ms-vscode.cpptools” extension, or any other you want:
+  "extensions": [
+    "ms-vscode.cpptools",
+    "ms-vscode.cmake-tools"
+  ],
+
+  // Any environment variables you want inside the container:
+  "containerEnv": {
+    "QT_QPA_PLATFORM": "xcb"
+  },
+
+  // If you need any post-create steps (e.g. clone submodules, run cmake init):
+  // "postCreateCommand": "git submodule update --init --recursive"
+}
